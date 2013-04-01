@@ -1,0 +1,2 @@
+class SecondaryFields < Generic
+end

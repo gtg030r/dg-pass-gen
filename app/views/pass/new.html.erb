@@ -1,0 +1,9 @@
+<%= form_tag("/form", :method=>"post") do %>
+	<%= label_tag :description %>:
+	<%= text_field_tag(:description) %>
+	
+		<%= label_tag :logo %>:
+	<%= text_field_tag(:logo) %>
+
+	<%= submit_tag("Generate Pass", :class=>"btn") %>
+<% end %>
