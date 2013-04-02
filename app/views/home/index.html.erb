@@ -6,5 +6,16 @@
 	<%= label_tag :logo, 'Logo:' %>
 	<%= text_field_tag(:logoText) %>
 
+	<%= hidden_field_tag :serialNumber %>
+	<%= hidden_field_tag :formatVersion %>
+	<%= hidden_field_tag :passTypeIdentifier %> 
+	<%= hidden_field_tag :webServiceURL %>
+	<%= hidden_field_tag :authentificationToken %>
+	<%= hidden_field_tag :teamIdentifier %>
+	<%= hidden_field_tag :barcode %>
+
+	<%= label_tag :message, 'Barcode:' %>
+	<%= text_field_tag (:barcode => :message) %>
+
 	<%= submit_tag("Generate Pass", :class=>"btn") %>
 <% end %>

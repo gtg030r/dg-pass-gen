@@ -12,12 +12,13 @@ class PassesController < ApplicationController
   end
 
   def create
-  	pass = Pass.create(:serialNumber.gsub!(:serialNumber), :description => params[:description], :logoText => params[:logoText])
+    params[:serialNumber] = "1"
+  	pass = Pass.create(:message => params[:message], :format => params[:format], :serialNumber => params[:serialNumber], :description => params[:description], :logoText => params[:logoText])
   	if pass.valid? 
   	  redirect_to pass_path(:id => pass.id)
   	else
   		flash[:error] = pass.errors.full_messages.join(" & ")
-  		redirect_to new_pas_path
+  		redirect_to new_pass_path
   	end
   end
 end
