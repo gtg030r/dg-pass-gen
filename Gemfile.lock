@@ -54,6 +54,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.21)
     multi_json (1.7.2)
+    nested_form (0.3.1)
     passbook (0.2.1)
       grocer
       rubyzip
@@ -115,6 +116,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
+  nested_form
   passbook
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
