@@ -18,7 +18,29 @@ ActiveRecord::Schema.define(:version => 20130327173643) do
     t.string "logo"
   end
 
-# Could not dump table "passes" because of following StandardError
-#   Unknown type 'barcode' for column 'barcode'
+  create_table "passes", :force => true do |t|
+    t.string  "passTypeIdentifier"
+    t.string  "webServiceURL"
+    t.string  "authenticationToken"
+    t.string  "teamIdentifier"
+    t.string  "organizationName"
+    t.string  "description"
+    t.string  "logoText"
+    t.string  "foregroundColor"
+    t.string  "backgroundColor"
+    t.string  "serialNumber"
+    t.string  "message"
+    t.string  "offer"
+    t.string  "value"
+    t.string  "colorFormat"
+    t.string  "colorFormat2"
+    t.string  "colorFormat3"
+    t.integer "fR"
+    t.integer "fG"
+    t.integer "fB"
+    t.integer "bR"
+    t.integer "bG"
+    t.integer "bB"
+  end
 
 end

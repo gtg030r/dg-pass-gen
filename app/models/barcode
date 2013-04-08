@@ -1,15 +1,4 @@
-class Barcode
-	include ActiveModel::Validations
-	include ActiveModel::Serialization
-
-	validates_presence_of :messsage, :format, :messageEncoding
-	attr_accessor : :attributes
-
-	def initialize(attributes = {})
-		@attributes = attributes
-	end
-
-	def read_attribute_for_validation(key)
-		@attributes[key]
-	end
+class Barcode < ActiveRecord::Base
+	belongs_to :pass
+	attr_accessible :message, :format, :messageEncoding
 end

@@ -22,7 +22,8 @@ end
 
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
-gem 'nested_form'
+gem 'bootstrap-colorpicker-rails'
+gem 'passbook'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
