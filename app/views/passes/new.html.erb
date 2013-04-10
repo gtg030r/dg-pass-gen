@@ -1,9 +1,31 @@
-<%= form_tag("/form", :method=>"post") do %>
-	<%= label_tag :description %>:
-	<%= text_field_tag(:description) %>
-	
-		<%= label_tag :logo %>:
-	<%= text_field_tag(:logo) %>
+<%= form_for @pass, :url=> {:action => "create"} do |f| %>
 
+	<%= f.label :description, 'Description:' %>
+	<%= f.text_field(:description) %>
+	
+	<%= f.label :logo, 'Logo:' %>
+	<%= f.text_field(:logoText) %>
+
+	<%= f.label :message, 'Barcode:' %>
+	<%= f.text_field(:message) %>
+
+	<%= f.label :organizationName, 'Organization Name:' %>
+	<%= f.text_field(:organizationName) %>
+	
+	<%= f.label :label, 'Label:' %>
+	<%= f.text_field(:label) %>	
+
+	<%= f.label :value, 'Value:' %>
+	<%= f.text_field(:value) %>	
+	
+	<%= f.label :foregroundColor, 'Foreground Color' %>
+	<%= f.text_field(:foregroundColor, :type=>"color") %>
+
+	<%= f.label :backgroundColor, 'Background Color' %>
+	<%= f.text_field(:backgroundColor, :type=>"color")%>
+
+	<div >
 	<%= submit_tag("Generate Pass", :class=>"btn") %>
+	</div>
 <% end %>
+

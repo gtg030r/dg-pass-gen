@@ -1,6 +1,6 @@
 class PassesController < ApplicationController
   def index
-	render :json => Pass.all
+	   render :json => Pass.all
   end
 
   def show
@@ -9,23 +9,31 @@ class PassesController < ApplicationController
 
   def new
     @pass = Pass.new
+	@pass.backgroundColor = "#dddddd"
+	@pass.foregroundColor = "#ffffff"
+  end
+
+  def download
+	@pass = Pass.find(params[:id])
+	
+	@pkp = Passbook::PKPass.new @pass.toPassbookJson().to_json
+	@pkp.addFile Rails.root.join('app/assets/images/icon.png')
+	@pkp.addFile Rails.root.join('app/assets/images/icon@2x.png')	
+	@pkp.addFile Rails.root.join('app/assets/images/logo.png')	
+	@pkp.addFile Rails.root.join('app/assets/images/logo@2x.png')	
+
+	pkpass = @pkp.stream
+	send_data pkpass.string, type: 'application/vnd.apple.pkpass', disposition: 'attachment', filename: "pass.pkpass"
   end
 
   def create
-    params[:serialNumber] = params[:id]
-    params[:colorFormat] = "rgb("
-    params[:colorFormat2] = ", "
-    params[:colorFormat3] = ")"
+	@pass = Pass.create(params[:pass])
 
-  	pass = Pass.create(:message => params[:message], :fR => params[:fR], :fG => params[:fG], :fB => params[:fB],
-		 :serialNumber => params[:serialNumber], :description => params[:description], :logoText => params[:logoText],
-		:organizationName => params[:organizationName], :colorFormat => params[:colorFormat], :colorFormat2 => params[:colorFormat2], :colorFormat3 => params[:colorFormat3],
-    :bR => params[:bR], :bG => params[:bG], :bB => params[:bB], :offer => params[:offer], :value => params[:value])
-  	if pass.valid? 
-  	  redirect_to pass_path(:id => pass.id)
+  	if @pass.valid? 
+  	  redirect_to pass_path(:id => @pass.id)
   	else
-  		flash[:error] = pass.errors.full_messages.join(" & ")
-  		redirect_to new_pass_path
+  		flash[:error] = @pass.errors.full_messages.join(" <br/> ")
+  		render :new
   	end
   end
 end

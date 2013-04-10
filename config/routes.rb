@@ -1,7 +1,8 @@
 Passbook::Application.routes.draw do
   get "home/index"
-
+  match 'passes/download/:id' => 'passes#download'
   resources :passes
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
