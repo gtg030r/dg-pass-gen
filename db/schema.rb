@@ -11,25 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130327173643) do
+ActiveRecord::Schema.define(:version => 20130325042236) do
 
   create_table "forms", :force => true do |t|
     t.string "description"
     t.string "logo"
-  end
-
-  create_table "passes", :force => true do |t|
-    t.string "passTypeIdentifier"
-    t.string "authenticationToken"
-    t.string "organizationName"
-    t.string "description"
-    t.string "logoText"
-    t.string "foregroundColor"
-    t.string "backgroundColor"
-    t.string "message"
-    t.string "key"
-    t.string "label"
-    t.string "value"
   end
 
 end
