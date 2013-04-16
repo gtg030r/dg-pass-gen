@@ -14,7 +14,7 @@ class Pass < ActiveRecord::Base
   attr_accessible :logo
 
   has_attached_file :logo,
-	:styles => { :original, :small => '29x29!' }
+	styles: { :original => '58x58!', :small => '29x29!' }
 
 
   def rgb(color)
