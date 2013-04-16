@@ -11,24 +11,22 @@ class Pass < ActiveRecord::Base
   validates :backgroundColor, :foregroundColor, presence: true
   validates :label, :value, presence: true
   attr_accessible :label, :value
-  attr_accessible :icon, :icon2x, :logo, :logo2x
+  attr_accessible :logo
 
-  has_attached_file :icon, styles: {
-	display: '58x58>'
-  }
+  has_attached_file :logo,
+	:styles => { :original, :small => '29x29!' }
 
- 
-  has_attached_file :icon2x
- 
-  has_attached_file :logo, styles: {
-	display: '158x50>'
-  }   
- 
-  has_attached_file :logo2x
 
   def rgb(color)
     color = color.gsub(/#/, "")
 	"rgb(#{color[0..1].hex},#{color[2..3].hex},#{color[4..5].hex})"
+  end
+
+  def logo(logo)
+    logo = self.logo(:small).to_file
+    logo2x = self.logo(:original).to_file
+    self.logo.instance_write :file_name, "logo.png"
+	self.logo2x.instance_write :file_name, "logo@2x.png"
   end
 
   def toPassbookJson
@@ -55,26 +53,6 @@ class Pass < ActiveRecord::Base
             key: "offer",
 			      label: self.label,
             value: self.value
-          }
-        ],
-        secondaryFields: [
-          {
-            key: "subtitle",
-            label: "MEMBER SINCE",
-            value: "2012"
-          }
-        ],
-        auxiliaryFields: [
-          {
-            key: "level",
-            label: "LEVEL",
-            value: "Platinum"
-          },
-          {
-            key: "favorite",
-            label: "FAVORITE TOY",
-            value: "Bucky Ball Magnets",
-            textAlignment: "PKTextAlignmentRight"
           }
         ],
         backFields: [
