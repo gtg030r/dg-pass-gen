@@ -11,7 +11,21 @@ class Pass < ActiveRecord::Base
   validates :backgroundColor, :foregroundColor, presence: true
   validates :label, :value, presence: true
   attr_accessible :label, :value
+  attr_accessible :icon, :icon2x, :logo, :logo2x
+
+  has_attached_file :icon, styles: {
+	display: '58x58>'
+  }
+
  
+  has_attached_file :icon2x
+ 
+  has_attached_file :logo, styles: {
+	display: '158x50>'
+  }   
+ 
+  has_attached_file :logo2x
+
   def rgb(color)
     color = color.gsub(/#/, "")
 	"rgb(#{color[0..1].hex},#{color[2..3].hex},#{color[4..5].hex})"
