@@ -7,7 +7,7 @@ class AddToPass < ActiveRecord::Migration
   end
 
   def down
-	drop_table :passes
 	remove_attachment :passes, :logo2x
+    drop_table :passes
   end
 end
