@@ -3,8 +3,11 @@ class AddToPass < ActiveRecord::Migration
 	create_table :passes do |t|
 		t.string :passTypeIdentifier, :authenticationToken, :organizationName, :description, :logoText, :foregroundColor, :backgroundColor, :message, :key, :label, :value
     end
-  add_attachment :passes, :logo2x
-
+  add_column :passes, :logo2x_file_name, :string
+  add_column :passes, :logo2x_content_type, :string
+  add_column :passes, :logo2x_file_size, :integer
+  add_column :passes, :logo2x_updated_at, :datetime
+  
   end
 
   def down
