@@ -27,7 +27,6 @@ class Pass < ActiveRecord::Base
 
   def toPassbookJson
   {
-      testUrL: self.logo2x.url(:original),
       formatVersion: 1,
       passTypeIdentifier: "pass.com.DealGenda.generic",
       serialNumber:"#{self.id}",
