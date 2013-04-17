@@ -34,10 +34,10 @@ class Pass < ActiveRecord::Base
       barcode: {
           message: self.message,
           format: "PKBarcodeFormatPDF417",
-          messageEncoding: "iso-15420"
+          messageEncoding: "iso-8859-1"
       },
       organizationName: self.organizationName,
-      description: self.description,
+      description: "coupon",
       logoText: self.logoText,
       foregroundColor: self.rgb(self.foregroundColor),
       backgroundColor: self.rgb(self.backgroundColor),
@@ -51,43 +51,10 @@ class Pass < ActiveRecord::Base
         ],
         backFields: [
           {
-            numberStyle: "PKNumberStyleSpellOut",
-            label: "spelled out",
-            key: "numberStyle",
-            value: 200
-          },
-          {
-            label: "in Reals",
-            key: "currency",
-            value: 200,
-            currencyCode: "BRL"
-          },
-          {
-            dateStyle: "PKDateStyleFull",
-            label: "full date",
-            key: "dateFull",
-            value: "1980-05-07T10:00-05:00"
-          },
-          {
-            label: "full time",
-            key: "timeFull",
-            value: "1980-05-07T10:00-05:00",
-            timeStyle: "PKDateStyleFull"
-          },
-          {
-            dateStyle: "PKDateStyleShort",
-            label: "short date and time",
-            key: "dateTime",
-            value: "1980-05-07T10:00-05:00",
-            timeStyle: "PKDateStyleShort"
-          },
-          {
-            dateStyle: "PKDateStyleShort",
-            label: "relative date",
-            key: "relStyle",
-            value: "2013-04-24T10:00-05:00",
-            isRelative: true
-          }
+            label: "details",
+            key: "Details",
+            value: self.description
+         } 
         ]
       }
     }
