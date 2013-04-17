@@ -30,8 +30,6 @@ class Pass < ActiveRecord::Base
       formatVersion: 1,
       passTypeIdentifier: "pass.com.DealGenda.generic",
       serialNumber:"#{self.id}",
-      webServiceURL: "https:\/\/www.DealGenga.com",
-      authenticationToken: "vxwxd7J8AlNNFPS8k0a0FfUFtq0ewzFdc",
       teamIdentifier: "RCT3MYPP47",
       barcode: {
           message: self.message,
