@@ -11,13 +11,14 @@ class Pass < ActiveRecord::Base
   validates :backgroundColor, :foregroundColor, presence: true
   validates :label, :value, presence: true
   attr_accessible :label, :value
-  attr_accessible :logo2x
 
   has_attached_file :logo2x, 
 	:styles => { :original => ['58x58!', :png], :small => ['29x29!', :png] }, 
 	:s3_credentials => "#{Rails.root}/config/paperclip.yml", 
 	:storage => :s3,
 	:bucket => "dg_pass_logos"
+
+  attr_accessible :logo2x
 
   def rgb(color)
     color = color.gsub(/#/, "")
