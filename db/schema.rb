@@ -14,17 +14,21 @@
 ActiveRecord::Schema.define(:version => 20130327173643) do
 
   create_table "passes", :force => true do |t|
-    t.string "passTypeIdentifier"
-    t.string "authenticationToken"
-    t.string "organizationName"
-    t.string "description"
-    t.string "logoText"
-    t.string "foregroundColor"
-    t.string "backgroundColor"
-    t.string "message"
-    t.string "key"
-    t.string "label"
-    t.string "value"
+    t.string   "passTypeIdentifier"
+    t.string   "authenticationToken"
+    t.string   "organizationName"
+    t.string   "description"
+    t.string   "logoText"
+    t.string   "foregroundColor"
+    t.string   "backgroundColor"
+    t.string   "message"
+    t.string   "key"
+    t.string   "label"
+    t.string   "value"
+    t.string   "logo2x_file_name"
+    t.string   "logo2x_content_type"
+    t.integer  "logo2x_file_size"
+    t.datetime "logo2x_updated_at"
   end
 
 end

@@ -11,26 +11,22 @@ class Pass < ActiveRecord::Base
   validates :backgroundColor, :foregroundColor, presence: true
   validates :label, :value, presence: true
   attr_accessible :label, :value
-  attr_accessible :logo
+  attr_accessible :logo2x
 
-  has_attached_file :logo,
-	styles: { :original => '58x58!', :small => '29x29!' }
-
+  has_attached_file :logo2x, 
+	:styles => { :original => ['58x58!', :png], :small => ['29x29!', :png] }, 
+	:s3_credentials => "#{Rails.root}/config/paperclip.yml", 
+	:storage => :s3,
+	:bucket => "dg_pass_logos"
 
   def rgb(color)
     color = color.gsub(/#/, "")
 	"rgb(#{color[0..1].hex},#{color[2..3].hex},#{color[4..5].hex})"
   end
 
-  def logo(logo)
-    logo = self.logo(:small).to_file
-    logo2x = self.logo(:original).to_file
-    self.logo.instance_write :file_name, "logo.png"
-	self.logo2x.instance_write :file_name, "logo@2x.png"
-  end
-
   def toPassbookJson
   {
+      testUrL: self.logo2x.url(:original),
       formatVersion: 1,
       passTypeIdentifier: "pass.com.DealGenda.generic",
       serialNumber:"#{self.id}",
