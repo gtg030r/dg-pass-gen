@@ -11,7 +11,7 @@ class Pass < ActiveRecord::Base
   validates :backgroundColor, :foregroundColor, presence: true
   validates :label, :value, presence: true
   attr_accessible :label, :value
-  attr_accessible :logo2x
+  attr_accessible :logo2x, :logo2x_file_name
 
   has_attached_file :logo2x, 
 	:styles => { :original => ['58x58!', :png], :small => ['29x29!', :png] }, 
