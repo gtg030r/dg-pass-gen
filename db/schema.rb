@@ -29,6 +29,10 @@ ActiveRecord::Schema.define(:version => 20130327173643) do
     t.string   "logo2x_content_type"
     t.integer  "logo2x_file_size"
     t.datetime "logo2x_updated_at"
+    t.string   "logo2x_file_name_file_name"
+    t.string   "logo2x_file_name_content_type"
+    t.integer  "logo2x_file_name_file_size"
+    t.datetime "logo2x_file_name_updated_at"
   end
 
 end
