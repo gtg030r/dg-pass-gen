@@ -9,7 +9,7 @@ Passbook.configure do |passbook|
   passbook.p12_cert = Rails.root.join('app/assets/certs/pass.p12')
   
   # Password for your certificate
-  passbook.p12_password = ''
+  passbook.p12_password = '123'
 
   # Other Settings
   #  passbook.notification_gateway = 'gateway.sandbox.push.apple.com'

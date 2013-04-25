@@ -22,13 +22,17 @@ ActiveRecord::Schema.define(:version => 20130327173643) do
     t.string   "foregroundColor"
     t.string   "backgroundColor"
     t.string   "message"
-    t.string   "key"
     t.string   "label"
     t.string   "value"
+    t.string   "expdate"
     t.string   "logo2x_file_name"
     t.string   "logo2x_content_type"
     t.integer  "logo2x_file_size"
     t.datetime "logo2x_updated_at"
+    t.string   "apass_file_name"
+    t.string   "apass_content_type"
+    t.integer  "apass_file_size"
+    t.datetime "apass_updated_at"
   end
 
 end

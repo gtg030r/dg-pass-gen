@@ -4,13 +4,14 @@ class PassesController < ApplicationController
   end
 
   def show
-    render :json => Pass.find(params[:id]).toPassbookJson()
+    # render :json => Pass.find(params[:id]).toPassbookJson()
+    redirect_to :action => "download", :id => params[:id]
   end
 
   def new
     @pass = Pass.new
-	@pass.backgroundColor = "#dddddd"
-	@pass.foregroundColor = "#ffffff"
+	  @pass.backgroundColor = "#333333"
+	  @pass.foregroundColor = "#ffffff"
   end
 
   def download
@@ -34,6 +35,7 @@ class PassesController < ApplicationController
 
   	if @pass.valid? 
   	  redirect_to pass_path(:id => @pass.id)
+      flash[:notice] = "You have successfully generated a pass!"
   	else
   		flash[:error] = @pass.errors.full_messages.join(" <br/> ")
   		render :new

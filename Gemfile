@@ -22,7 +22,6 @@ end
 
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
-gem 'bootstrap-colorpicker-rails'
 gem 'passbook'
 gem 'paperclip'
 gem 'aws-sdk'

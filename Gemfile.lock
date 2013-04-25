@@ -33,8 +33,6 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
-    bootstrap-colorpicker-rails (0.2)
-      railties (>= 3.0)
     builder (3.0.4)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -132,7 +130,6 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk
-  bootstrap-colorpicker-rails
   coffee-rails (~> 3.2.1)
   jquery-rails
   paperclip

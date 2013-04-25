@@ -17,8 +17,15 @@ class Pass < ActiveRecord::Base
 	:s3_credentials => "#{Rails.root}/config/paperclip.yml", 
 	:storage => :s3,
 	:bucket => "dg_pass_logos"
+  
+  attr_accessible :expdate
 
   attr_accessible :logo2x
+  
+  has_attached_file :apass,
+	:s3_credentials => "#{Rails.root}/config/paperclip.yml", 
+	:storage => :s3,
+	:bucket => "dg_pass_logos"
 
   def rgb(color)
     color = color.gsub(/#/, "")
@@ -28,7 +35,7 @@ class Pass < ActiveRecord::Base
   def toPassbookJson
   {
       formatVersion: 1,
-      passTypeIdentifier: "pass.com.DealGenda.generic",
+      passTypeIdentifier: "pass.dealgenda.com",
       serialNumber:"#{self.id}",
       teamIdentifier: "RCT3MYPP47",
       barcode: {
@@ -41,7 +48,7 @@ class Pass < ActiveRecord::Base
       logoText: self.logoText,
       foregroundColor: self.rgb(self.foregroundColor),
       backgroundColor: self.rgb(self.backgroundColor),
-      generic: {
+      coupon: {
         primaryFields: [
           {
             key: "offer",
@@ -49,12 +56,21 @@ class Pass < ActiveRecord::Base
             value: self.value
           }
         ],
+        auxiliaryFields: [
+          {
+            key: "expires",
+            label: "EXPIRES",
+            value: self.expdate,
+            isRelative: true,
+            dateStyle: "PKDateStyleShort"
+          }
+        ],
         backFields: [
           {
             label: "details",
             key: "Details",
             value: self.description
-         } 
+         }
         ]
       }
     }
