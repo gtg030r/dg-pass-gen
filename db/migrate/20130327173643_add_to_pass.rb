@@ -6,12 +6,10 @@ class AddToPass < ActiveRecord::Migration
 	end
   add_attachment :passes, :logo2x
   add_attachment :passes, :apass
-  
   end
 
   def down
     remove_attachment :passes, :logo2x
-    remove_attachment :passes, :apass
     drop_table :passes
   end
 end
