@@ -32,12 +32,16 @@
 
 	<div>
 	<%= f.label :expdate, 'Enter an expiration date for your coupon:' %>
-	<%= f.text_field(:expdate, :type => 'date', :min => Time.now) %>
+	<%= f.text_field(:expdate, :id => "expdate") %>
 	</div>
 
 	<div>
 	<%= submit_tag("Generate Pass", :class=>"btn") %>
 	</div>
-		
 <% end %>
 
+<script>
+$(function() {
+  $('#expdate').datepicker({dateFormat: "yy-mm-dd"});	
+});
+</script>

@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20130327173643) do
     t.string   "message"
     t.string   "label"
     t.string   "value"
-    t.string   "expdate"
+    t.datetime "expdate"
     t.string   "logo2x_file_name"
     t.string   "logo2x_content_type"
     t.integer  "logo2x_file_size"
