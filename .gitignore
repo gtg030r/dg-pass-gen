@@ -11,3 +11,9 @@
 /log/*.log
 /tmp
 *.swp
+
+# ignore env variables file
+/config/local_env.yml
+
+# ignore certs directory
+/app/assets/*

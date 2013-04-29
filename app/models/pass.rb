@@ -12,6 +12,7 @@ class Pass < ActiveRecord::Base
   validates :label, :value, presence: true
   attr_accessible :label, :value
 
+  # this is used to attach images to models using the Paperclip gem
   has_attached_file :logo2x, 
 	:styles => { :original => ['58x58!', :png], :small => ['29x29!', :png] }, 
 	:s3_credentials => "#{Rails.root}/config/paperclip.yml", 
@@ -19,19 +20,19 @@ class Pass < ActiveRecord::Base
 	:bucket => "dg_pass_logos"
   
   attr_accessible :expdate
-
   attr_accessible :logo2x
-  
-  has_attached_file :apass,
-	:s3_credentials => "#{Rails.root}/config/paperclip.yml", 
-	:storage => :s3,
-	:bucket => "dg_pass_logos"
 
+  ## function for defining color in rgb format
+  # param: color
+  ##
   def rgb(color)
     color = color.gsub(/#/, "")
 	"rgb(#{color[0..1].hex},#{color[2..3].hex},#{color[4..5].hex})"
   end
 
+  ## function for generating JSON
+  # The JSON here is formatted to the specifications of a pass provided by Apple
+  ##
   def toPassbookJson
   {
       formatVersion: 1,

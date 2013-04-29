@@ -1,5 +1,5 @@
 development:
-  access_key_id: ENV['AWS_ACCESS_KEY']
-  secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+  access_key_id: 'AKIAJ7MP7WELFKC3ISQQ'
+  secret_access_key: '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'
 
  
