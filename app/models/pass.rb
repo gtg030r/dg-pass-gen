@@ -20,7 +20,9 @@ class Pass < ActiveRecord::Base
 	:bucket => "dg_pass_logos"
   
   attr_accessible :expdate
+  validates :expdate, :value, presence: true
   attr_accessible :logo2x
+  validates :logo2x, :value, presence: true
 
   ## function for defining color in rgb format
   # param: color
